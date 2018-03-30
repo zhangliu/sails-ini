@@ -1,0 +1,27 @@
+{
+  "name": "sails-ini",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangliu/sails-ini.git"
+  },
+  "author": "zhangliu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangliu/sails-ini/issues"
+  },
+  "homepage": "https://github.com/zhangliu/sails-ini#readme",
+  "dependencies": {
+    "colors": "^1.2.1",
+    "commander": "^2.15.1"
+  },
+  "bin": {
+    "sin": "./bin/sin.js",
+    "sails-ini": "./bin/sin.js"
+  }
+}
