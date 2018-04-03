@@ -2,9 +2,6 @@ var sails = require('sails')
 const supertest = require('supertest')
 const chai = require('chai')
 const sinon = require('sinon')
-const mockToken = require('./fixtures/MockToken')
-chai.should()
-global.mockModels = require('./fixtures/MockModels')
 
 // Before running any tests...
 before (function (done) {
@@ -19,8 +16,8 @@ before (function (done) {
     // and disable all logs except errors and warnings:
     // configuration for testing purposes
     models: {
-      connection: 'MysqlServerCi',
-      migrate: 'safe'
+      connection: 'MysqlServerTest',
+      migrate: 'alter'
     },
     hooks: { grunt: false },
     log: { level: 'warn' },
@@ -34,8 +31,6 @@ before (function (done) {
     global.request = request
     global.expect = chai.expect
     global.sinon = sinon
-    global.user = await mockToken()
-    global.userToken = global.user.token
     // 统一mock调错误日志打印,并添加到全局，以便作为spy使用
     global.logError = sinon.stub(sails.log, 'error').callsFake(() => { })
 
