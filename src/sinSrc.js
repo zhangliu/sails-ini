@@ -18,4 +18,26 @@ if (/^[^\d]*1\..*/.test(sailsVersion)) { // 1.0 版本
 }
 
 // 0.12版本
-fs.readFileSync(`${__dirname}/`)
+const path = `${__dirname}/template/0.12`
+const files = readDirSync(path)
+files.forEach((file) => {
+  const destFile = file.replace(path, process.cwd())
+  fs.copyFileSync(file, destFile)
+})
+
+function readDirSync (path) {
+  let result = []
+  const files = fs.readdirSync(path)
+  files.forEach(function (file, index) {
+    const filePath = `${path}/${file}`
+    const info = fs.statSync(filePath)
+    if (info.isDirectory()) {
+      // console.log(`dir: ${filePath}`)
+      result = result.concat(readDirSync(path + '/' + file))
+    } else {
+      // console.log(`file: ${filePath}`)
+      result.push(filePath)
+    }
+  })
+  return result
+}
