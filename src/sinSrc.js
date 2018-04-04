@@ -43,11 +43,16 @@ fs.writeFileSync('./package.json', JSON.stringify(packageInfo))
 
 console.log(colors.cyan('开始安装必要的命令...'))
 // 执行必要的库安装命令
+console.log(colors.cyan('安装eureka...'))
 cprocess.execSync('npm i @ytx/futures-eureka-client')
 cprocess.execSync('npm i @ytx/node-common-tool')
+console.log(colors.cyan('安装test工具...'))
 cprocess.execSync('npm i supertest')
 cprocess.execSync('npm i chai')
 cprocess.execSync('npm i sinon')
+console.log(colors.cyan('安装eslint配置...'))
+const cmd = 'export PKG=eslint-config-airbnb; npm info "$PKG@latest" peerDependencies --json | command sed "s/[\{\},]//g ; s/: /@/g" | xargs npm install --save-dev "$PKG@latest"'
+cprocess.execSync(cmd)
 console.log(colors.green('success, all jobs has done!'))
 
 function readDirSync (fileDir) {
