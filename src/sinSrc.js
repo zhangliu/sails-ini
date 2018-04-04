@@ -43,11 +43,11 @@ fs.writeFileSync('./package.json', JSON.stringify(packageInfo))
 
 console.log('开始安装必要的命令...')
 // 执行必要的库安装命令
-cprocess.execSync('npm i @ytx/futures-eureka-client')
-cprocess.execSync('npm i @ytx/node-common-tool')
-cprocess.execSync('npm i supertest')
-cprocess.execSync('npm i chai')
-cprocess.execSync('npm i sinon')
+// cprocess.execSync('npm i @ytx/futures-eureka-client')
+// cprocess.execSync('npm i @ytx/node-common-tool')
+// cprocess.execSync('npm i supertest')
+// cprocess.execSync('npm i chai')
+// cprocess.execSync('npm i sinon')
 console.log(colors.green('success, all jobs has done!'))
 
 function readDirSync (fileDir) {
