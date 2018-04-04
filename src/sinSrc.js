@@ -17,7 +17,7 @@ if (!sailsVersion) {
   process.exit()
 }
 
-console.log(`获取到sails版本信息：${sailsVersion}`)
+console.log(colors.cyan(`获取到sails版本信息：${sailsVersion}`))
 
 if (/^[^\d]*1\..*/.test(sailsVersion)) { // 1.0 版本
   process.exit()
@@ -35,19 +35,19 @@ files.forEach((file) => {
   fs.writeFileSync(destFile, fs.readFileSync(file))
 })
 
-console.log('开始添加script命令...')
+console.log(colors.cyan('开始添加script命令...'))
 // 添加test命令
 packageInfo.scripts.test = 'START_FROM=test node ./node_modules/mocha/bin/mocha -t 20000 tests/lifecycle.test.js'
 packageInfo.scripts.dp = "'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' xxx"
 fs.writeFileSync('./package.json', JSON.stringify(packageInfo))
 
-console.log('开始安装必要的命令...')
+console.log(colors.cyan('开始安装必要的命令...'))
 // 执行必要的库安装命令
-// cprocess.execSync('npm i @ytx/futures-eureka-client')
-// cprocess.execSync('npm i @ytx/node-common-tool')
-// cprocess.execSync('npm i supertest')
-// cprocess.execSync('npm i chai')
-// cprocess.execSync('npm i sinon')
+cprocess.execSync('npm i @ytx/futures-eureka-client')
+cprocess.execSync('npm i @ytx/node-common-tool')
+cprocess.execSync('npm i supertest')
+cprocess.execSync('npm i chai')
+cprocess.execSync('npm i sinon')
 console.log(colors.green('success, all jobs has done!'))
 
 function readDirSync (fileDir) {
