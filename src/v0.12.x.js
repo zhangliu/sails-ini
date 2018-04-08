@@ -10,8 +10,8 @@ function run (packageInfo) {
   // 拷贝文件
   const fileDir = `${__dirname}/template/v0.12.x`
   const files = readDirSync(fileDir)
+  console.log('开始拷贝文件...')
   files.forEach((file) => {
-    console.log(`开始拷贝文件${path.basename(file)}...`)
     const destFile = file.replace(fileDir, process.cwd())
     const destDir = path.dirname(destFile)
     if (!fs.existsSync(destDir)) mkdirSync(destDir)
